@@ -2,6 +2,8 @@
 // // // javascript library for creating charts
 // #############################
 var Chartist = require("chartist");
+// import * as Chartist from 'chartist';
+// import * as tooltip from 'chartist-plugin-tooltips'
 
 // ##############################
 // // // variables used to create animation on charts
@@ -93,6 +95,7 @@ const emailsSubscriptionChart = {
     },
     low: 0,
     high: 1000,
+    // plugin: [Chartist.plugins.tooltip({})],
     chartPadding: {
       top: 0,
       right: 5,
@@ -183,8 +186,76 @@ const completedTasksChart = {
   },
 };
 
+const data = {
+  data: {
+    labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', "Saturday"],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3, 15],
+        backgroundColor: [
+          '#ff1744',
+          '#d500f9',
+          '#651fff',
+          '#00e5ff',
+          '#1de9b6',
+          '#00e676',
+          '#ffc400'
+        ],
+      },
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  }
+}
+
+const groupeddata = {
+  data: {
+    labels: ['1', '2', '3', '4', '5', '6'],
+    datasets: [
+      {
+        label: '# of Red Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: 'rgb(255, 99, 132)',
+      },
+      {
+        label: '# of Blue Votes',
+        data: [2, 3, 20, 5, 1, 4],
+        backgroundColor: 'rgb(54, 162, 235)',
+      },
+      {
+        label: '# of Green Votes',
+        data: [3, 10, 13, 15, 22, 30],
+        backgroundColor: 'rgb(75, 192, 192)',
+      },
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  }
+}
+
 module.exports = {
   dailySalesChart,
   emailsSubscriptionChart,
   completedTasksChart,
+  data,
+  groupeddata
 };

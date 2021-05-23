@@ -28,7 +28,7 @@ const switchRoutes = (
           <Route
             path={prop.layout + prop.path}
             component={prop.component}
-            key={key}
+            key={key+prop.path}
           />
         );
       }
@@ -48,8 +48,9 @@ export default function Admin({ ...rest }) {
   // states and functions
   const [image, setImage] = React.useState(bgImage);
   const [color, setColor] = React.useState("blue");
-  const [fixedClasses, setFixedClasses] = React.useState("dropdown show");
+  const [fixedClasses, setFixedClasses] = React.useState("dropdown");
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  // console.log(routes)
   const handleImageClick = (image) => {
     setImage(image);
   };
@@ -83,6 +84,9 @@ export default function Admin({ ...rest }) {
       });
       document.body.style.overflow = "hidden";
     }
+    // rooms.rooms.map(room => {
+    //   routes.splice(2,0,room)
+    // })
     window.addEventListener("resize", resizeFunction);
     // Specify how to clean up after this effect:
     return function cleanup() {
@@ -96,7 +100,7 @@ export default function Admin({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={"Creative Tim"}
+        logoText={"Lineesh NM"}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}
@@ -105,11 +109,11 @@ export default function Admin({ ...rest }) {
         {...rest}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar
-          routes={routes}
-          handleDrawerToggle={handleDrawerToggle}
-          {...rest}
-        />
+      <Navbar
+        routes={routes}
+        handleDrawerToggle={handleDrawerToggle}
+        {...rest}
+      />
         {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         {getRoute() ? (
           <div className={classes.content}>

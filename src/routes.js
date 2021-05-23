@@ -26,6 +26,7 @@ import Unarchive from "@material-ui/icons/Unarchive";
 import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
+// import DiningRoom from "views/DiningRoom/DiningRoom"
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
@@ -35,6 +36,7 @@ import NotificationsPage from "views/Notifications/Notifications.js";
 import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
+import rooms from 'variables/room'
 
 const dashboardRoutes = [
   {
@@ -110,5 +112,9 @@ const dashboardRoutes = [
     layout: "/admin",
   },
 ];
+
+rooms.map(room => {
+  dashboardRoutes.splice(2,0,room)
+})
 
 export default dashboardRoutes;
